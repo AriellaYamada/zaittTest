@@ -14,7 +14,7 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   button: {
-    width:  '15%',
+    width:  '20%',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -24,4 +24,4 @@ export default StyleSheet.create({
     padding: 15,
     backgroundColor: '#000'
   }
-})
+});
