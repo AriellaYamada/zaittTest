@@ -5,9 +5,11 @@ import { withRouter } from 'react-router-native';
 
 import HomeController from './HomeController';
 
+import { HomeHeader, SectionSlider } from '../../components';
+
 import { setMainAction } from '../../actions/mainActions';
 
-import { View, Text, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 
 class Home extends Component {
 
@@ -15,24 +17,41 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      msg: {}
+      backgroundImage: ''
     };
 
     this.controller = new HomeController(this);
+
+    this.renderSections = this.renderSections.bind(this);
   }
 
   componentWillMount() {
     this.controller.setInitialVariables();
   }
 
-  render() {
-    const { total, name } = this.state.msg;
+  renderSections() {
+    const { titles } = this.props.main;
+    const sections = Object.values(titles);
+    if(titles) {
+      return titles.map((title, index) => {
+        return <SectionSlider {...title} key={index}/>;
+      });
+    }
+  }
 
-    return (
-      <View>
-        <Text>{name}</Text>
-      </View>
-    );
+  render() {
+    if(this.props.main.app) {
+      const { name, app: { header, logo } } = this.props.main;
+      return (
+        <View>
+          <HomeHeader backgroundImage={header} logo={logo} location={name}/>
+          <ScrollView>
+            {this.renderSections()}
+          </ScrollView>
+        </View>
+      );
+    }
+    return null;
   }
 }
 
@@ -41,7 +60,6 @@ const ACTIONS = {
 };
 
 const MAP = (state) => {
-  console.log(state);
   return {
     main: state.main
   };
