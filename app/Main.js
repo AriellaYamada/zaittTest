@@ -1,24 +1,49 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import axios from 'axios';
+import Orientation from 'react-native-orientation';
+import { connect } from 'react-redux';
+import { View } from 'react-native';
+import { withRouter, Route } from 'react-router-native';
+import MainController from './MainController';
+import { NavigationBar } from './components';
 
-import { withRouter, Route } from  'react-router-native';
-
+import { setMainAction } from './actions/mainActions';
 
 class Main extends Component {
   constructor(props) {
+    super(props);
+
+    this.controller = new MainController(this);
 
   }
 
-  componentWillMount() {
-    axios.get('HTTP://STAGING.ZAITT3.ZAITTGROUP.COM/API/V1/STORES/1/INIT').then(response => console.log(response));
+  async componentWillMount() {
+    this.controller.setInitialVariables();
+    // Orientation.lockToPortrait();
   }
-  
+
+  componentDidMount() {
+    this.props.history.push('/home');
+  }
+
+
   render() {
     return (
       <View>
-        <Text>Aqui</Text>
+        {this.props.children}
+        <NavigationBar />
       </View>
     );
   }
 }
+
+const ACTIONS = {
+  setMainAction
+};
+
+const MAP = (state) => {
+  return {
+    main: state.main
+  };
+};
+
+export default withRouter(connect(MAP, ACTIONS)(Main));

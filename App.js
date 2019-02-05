@@ -11,7 +11,11 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <NativeRouter>
-          <Home />
+          <Main>
+            <Switch>
+              <Route exact path='/home' component={Home} />
+            </Switch>
+          </Main>
         </NativeRouter>
       </Provider>
     );

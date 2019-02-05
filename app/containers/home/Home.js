@@ -3,14 +3,12 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { withRouter } from 'react-router-native';
 
-import HomeController from './HomeController';
-
 import { HomeHeader, SectionSlider } from '../../components';
 
 import { setMainAction } from '../../actions/mainActions';
 
 import { View, ScrollView, StyleSheet } from 'react-native';
-
+import style from './home.style';
 class Home extends Component {
 
   constructor(props) {
@@ -20,13 +18,7 @@ class Home extends Component {
       backgroundImage: ''
     };
 
-    this.controller = new HomeController(this);
-
     this.renderSections = this.renderSections.bind(this);
-  }
-
-  componentWillMount() {
-    this.controller.setInitialVariables();
   }
 
   renderSections() {
@@ -41,11 +33,16 @@ class Home extends Component {
 
   render() {
     if(this.props.main.app) {
-      const { name, app: { header, logo } } = this.props.main;
+      const { name, app: { header, logo, button_background_color } } = this.props.main;
       return (
-        <View>
-          <HomeHeader backgroundImage={header} logo={logo} location={name}/>
-          <ScrollView>
+        <View style={style.view}>
+          <ScrollView style={style.scrollView}>
+            <HomeHeader
+              backgroundImage={header}
+              logo={logo}
+              location={name}
+              buttonColor={button_background_color}
+            />
             {this.renderSections()}
           </ScrollView>
         </View>

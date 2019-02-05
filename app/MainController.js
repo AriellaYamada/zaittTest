@@ -1,12 +1,9 @@
 export default class HomeController {
   constructor(context) {
-
     this.setInitialVariables = this.setInitialVariables.bind(context);
-
   }
 
   async setInitialVariables() {
-    let variables;
     let result;
 
     try {
