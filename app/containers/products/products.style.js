@@ -7,9 +7,16 @@ export default StyleSheet.create({
     height,
     width
   },
-  tabBar: {
-    height: 30,
-    width
+  sectionTitle: {
+    marginTop: 15,
+    height: 80,
+    width,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  sectionTitleText: {
+    fontSize: 20,
+    fontWeight: '700',
   },
   scrollView: {
     marginBottom: 60

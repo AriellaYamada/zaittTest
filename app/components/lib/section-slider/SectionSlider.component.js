@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, ImageBackground, Text, ScrollView } from 'react-native';
-
+import { View, ImageBackground, Text, ScrollView, TouchableHighlight } from 'react-native';
 import style from './sectionSlider.style';
 
 export class SectionSlider extends Component {
@@ -19,13 +18,17 @@ export class SectionSlider extends Component {
   }
 
   renderCards() {
-    const { categories } = this.props;
+    const { categories, history, title } = this.props;
     if(categories) {
       return categories.map((item, index) => {
         return (
-          <ImageBackground key={index} style={style.image} source={{ uri: item.picture }}>
-            <Text style={style.subtitle}>{item.category}</Text>
-          </ImageBackground>
+          <TouchableHighlight key={index} id={item} onPress={(e) =>
+             history.push(`/products/${title}/${item.key_words}`)
+          }>
+            <ImageBackground  style={style.image} source={{ uri: item.picture }}>
+              <Text style={style.subtitle}>{item.category}</Text>
+            </ImageBackground>
+          </TouchableHighlight>
         );
       });
     }

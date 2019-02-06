@@ -1,4 +1,4 @@
-import { SET_PRODUCTS } from '../actions/mainActions';
+import { SET_PRODUCTS } from '../actions/productsActions';
 
 const INITIAL_STATE = {};
 

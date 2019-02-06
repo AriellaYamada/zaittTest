@@ -26,7 +26,7 @@ class Home extends Component {
     const sections = Object.values(titles);
     if(titles) {
       return titles.map((title, index) => {
-        return <SectionSlider {...title} key={index}/>;
+        return <SectionSlider {...title} key={index} history={this.props.history}/>;
       });
     }
   }
@@ -62,4 +62,4 @@ const MAP = (state) => {
   };
 };
 
-export default connect(MAP, ACTIONS)(Home);
+export default withRouter(connect(MAP, ACTIONS)(Home));

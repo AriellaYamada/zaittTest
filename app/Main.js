@@ -7,6 +7,7 @@ import MainController from './MainController';
 import { NavigationBar } from './components';
 
 import { setMainAction } from './actions/mainActions';
+import { setProductsAction } from './actions/productsActions';
 
 class Main extends Component {
   constructor(props) {
@@ -37,12 +38,14 @@ class Main extends Component {
 }
 
 const ACTIONS = {
-  setMainAction
+  setMainAction,
+  setProductsAction
 };
 
 const MAP = (state) => {
   return {
-    main: state.main
+    main: state.main,
+    products: state.products
   };
 };
 
