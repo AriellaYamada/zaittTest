@@ -9,10 +9,13 @@ export default StyleSheet.create({
   },
   sectionTitle: {
     marginTop: 15,
-    height: 80,
     width,
+    height: 90,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  backButton: {
   },
   sectionTitleText: {
     fontSize: 20,
@@ -20,5 +23,31 @@ export default StyleSheet.create({
   },
   scrollView: {
     marginBottom: 60
+  },
+  tabBar: {
+    height: 30,
+    marginTop: 3,
+    marginBottom: 3
+  },
+  tab: {
+    height: 20,
+    width: width/3,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  tabText: {
+    fontWeight: '400',
+    fontSize: 15
+  },
+  selectedTab: {
+    height: 20,
+    width: width/3,
+    borderBottomWidth: 5,
+    borderColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  selectedTabText: {
+    fontWeight: '700',
   }
 });
