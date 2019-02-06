@@ -43,7 +43,7 @@ export default StyleSheet.create({
     height: 20,
     width: width/3,
     borderBottomWidth: 5,
-    borderColor: 'green',
+    borderColor: '#43e891',
     alignItems: 'center',
     justifyContent: 'center'
   },

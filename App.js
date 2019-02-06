@@ -7,6 +7,7 @@ import store from './app/store';
 
 import { Home } from './app/containers/home';
 import { Products } from './app/containers/products';
+import { Cart } from './app/containers/cart';
 
 export default class App extends Component {
   render() {
@@ -17,6 +18,7 @@ export default class App extends Component {
             <Switch>
               <Route exact path='/home' component={Home} />
               <Route path='/products/:section/:category' component={Products} />
+              <Route path='/cart' component={Cart} />
             </Switch>
           </Main>
         </NativeRouter>

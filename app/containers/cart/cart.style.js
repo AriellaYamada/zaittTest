@@ -3,42 +3,52 @@ import { StyleSheet, Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
-  card: {
-    height: 80,
+  view: {
+    height,
+    width
+  },
+  sectionTitle: {
+    marginTop: 15,
     width,
-    flexDirection: 'row',
-    marginTop: 5,
-    marginBottom: 5,
-    borderBottomWidth: 1,
-    borderColor: 'gray',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  image: {
-    height: 70,
-    width: 70,
-    margin: 5,
-  },
-  info: {
-    flexDirection: 'column',
+    height: 90,
+    alignItems: 'center',
     justifyContent: 'space-between',
-    alignItems: 'stretch',
-    width: '60%'
+    flexDirection: 'row',
   },
-  name: {
+  backButton: {
+  },
+  sectionTitleText: {
+    fontSize: 20,
     fontWeight: '700',
-    fontSize: 15,
-    marginTop: 2,
-    marginBottom: 2
   },
-  description: {
-    fontSize: 10,
+  scrollView: {
+    marginBottom: 60
   },
-  price: {
-    fontWeight: '700',
-    fontSize: 15,
+  tabBar: {
+    height: 30,
     marginTop: 3,
     marginBottom: 3
+  },
+  tab: {
+    height: 20,
+    width: width/3,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  tabText: {
+    fontWeight: '400',
+    fontSize: 15
+  },
+  selectedTab: {
+    height: 20,
+    width: width/3,
+    borderBottomWidth: 5,
+    borderColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  selectedTabText: {
+    fontWeight: '700',
   },
   buttonGroup: {
     flexDirection: 'row',

@@ -31,7 +31,7 @@ class Main extends Component {
     return (
       <View>
         {this.props.children}
-        <NavigationBar buttonColor={this.props.main.app ? this.props.main.app.button_background_color : "#fff"} />
+        <NavigationBar history={this.props.history} buttonColor={this.props.main.app ? this.props.main.app.button_background_color : "#fff"} />
       </View>
     );
   }

@@ -88,7 +88,6 @@ class Products extends Component {
 
   render() {
     const { section, category } = this.props.match.params;
-    const x = this.state.selectedIndex;
 
     return(
       <View style={style.view}>

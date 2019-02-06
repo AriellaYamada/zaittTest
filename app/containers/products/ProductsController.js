@@ -15,17 +15,17 @@ export default class ProductsController {
     return this.props.setProductsAction(JSON.parse(result._bodyText));
   }
 
-  addToCart(item) {
+  async addToCart(item) {
     const { addedItems } = this.props.cart;
     if(addedItems.length) {
       const itemIndex = addedItems.findIndex(({ id }) => id == item.id);
       if(itemIndex > -1) addedItems[itemIndex].amount++;
       else addedItems.push({ amount: 1, ...item });
     } else addedItems.push({ amount: 1, ...item });
-    this.props.setProductsAction(addedItems);
+    await this.props.setProductsAction(addedItems);
   }
 
-  removeFromCart(productId, quantity) {
+  async removeFromCart(productId, quantity) {
     const { addedItems } = this.props.cart;
     if(addedItems.length) {
       const itemIndex = addedItems.findIndex(({ id }) => id == productId);
@@ -34,6 +34,6 @@ export default class ProductsController {
         else addedItems[itemIndex].amount = addedItems[itemIndex].amount - quantity;
       }
     }
-    this.props.setProductsAction(addedItems);
+    await this.props.setProductsAction(addedItems);
   }
 }

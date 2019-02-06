@@ -25,14 +25,14 @@ export class ProductCard extends Component {
     if(item) amount = item.amount;
     if(amount > 0) {
       return (
-        <View>
-          <TouchableHighlight onPress={() => this.props.removeFromCart(product.id, 1)}><Text>-</Text></TouchableHighlight>
-          <TouchableHighlight><Text>{amount}</Text></TouchableHighlight>
-          <TouchableHighlight onPress={() => this.props.addToCart(product)}><Text>+</Text></TouchableHighlight>
+        <View style={style.buttonGroup}>
+          <TouchableHighlight onPress={() => this.props.removeFromCart(product.id, 1)}><Text style={style.buttonText}>-</Text></TouchableHighlight>
+          <TouchableHighlight><Text style={style.amountText}>{amount}</Text></TouchableHighlight>
+          <TouchableHighlight onPress={() => this.props.addToCart(product)}><Text style={style.buttonText}>+</Text></TouchableHighlight>
         </View>
       );
     }
-    return <TouchableHighlight onPress={() => this.props.addToCart(product)}><Text>COMPRAR</Text></TouchableHighlight>;
+    return <TouchableHighlight style={style.buyButton} onPress={() => this.props.addToCart(product)}><Text style={style.amountText}>COMPRAR</Text></TouchableHighlight>;
   }
 
   render() {
