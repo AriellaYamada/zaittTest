@@ -57,9 +57,23 @@ class Products extends Component {
   }
 
   renderProductsList() {
-    const { items } = this.props.products;
-    if(items)
-      return items.map((product, index) => <ProductCard {...product} key={index} />);
+    const { products: { items }, cart: { addedItems } } = this.props;
+    if(items) {
+      return items.map((product, index) => {
+        let amount = 0;
+        const item = items.find(({ id }) => id == product.id);
+        if(item) amount = item.amount;
+        return(
+          <ProductCard
+            {...product}
+            key={index}
+            amount={amount}
+            addToCart={this.controller.addToCart} removeFromCart={this.controller.removeFromCart}
+            cart={addedItems}
+          />
+        );
+      });
+    }
     return null;
   }
 
@@ -70,10 +84,6 @@ class Products extends Component {
     const selectedIndex = main.titles.findIndex(({ title }) => title == section);
     this.controller.getCategoryProducts(category, pageIndex);
     this.setState({ categories: main.titles[selectedIndex].categories, selectedCategory: category, selectedIndex });
-  }
-
-  componentWillUpdate() {
-    console.log();
   }
 
   render() {
@@ -109,7 +119,8 @@ const ACTIONS = {
 const MAP = (state) => {
   return {
     main: state.main,
-    products: state.products
+    products: state.products,
+    cart: state.cart
   };
 };
 

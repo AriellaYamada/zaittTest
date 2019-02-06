@@ -1,6 +1,8 @@
 export default class ProductsController {
   constructor(context) {
     this.getCategoryProducts = this.getCategoryProducts.bind(context);
+    this.addToCart = this.addToCart.bind(context);
+    this.removeFromCart = this.removeFromCart.bind(context);
   }
 
   async getCategoryProducts(category, page) {
@@ -11,5 +13,27 @@ export default class ProductsController {
       console.log(err);
     }
     return this.props.setProductsAction(JSON.parse(result._bodyText));
+  }
+
+  addToCart(item) {
+    const { addedItems } = this.props.cart;
+    if(addedItems.length) {
+      const itemIndex = addedItems.findIndex(({ id }) => id == item.id);
+      if(itemIndex > -1) addedItems[itemIndex].amount++;
+      else addedItems.push({ amount: 1, ...item });
+    } else addedItems.push({ amount: 1, ...item });
+    this.props.setProductsAction(addedItems);
+  }
+
+  removeFromCart(productId, quantity) {
+    const { addedItems } = this.props.cart;
+    if(addedItems.length) {
+      const itemIndex = addedItems.findIndex(({ id }) => id == productId);
+      if(itemIndex > -1) {
+        if(addedItems[itemIndex].amount == quantity) addedItems.splice(itemIndex, 1);
+        else addedItems[itemIndex].amount = addedItems[itemIndex].amount - quantity;
+      }
+    }
+    this.props.setProductsAction(addedItems);
   }
 }

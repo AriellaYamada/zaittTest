@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { default as mainReducer } from './reducers/mainReducer';
 import { default as productsReducer } from './reducers/productsReducer';
+import { default as cartReducer } from './reducers/cartReducer';
 
 export default (() => {
   const initialState = {};
@@ -23,6 +24,7 @@ function createReducer(reducers) {
     root: (state = null) => state,
     ...reducers,
     main: mainReducer,
-    products: productsReducer
+    products: productsReducer,
+    cart: cartReducer
   });
 }
